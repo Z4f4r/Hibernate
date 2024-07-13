@@ -18,18 +18,20 @@ public class App {
         try {
             session.beginTransaction();
 
-//            Person person = session.get(Person.class, 1);
-//            System.out.println(person.getName());
-//            System.out.println(person.getAge());
-            Person person1 = new Person("Test1", 30);
-            Person person2 = new Person("Test2", 35);
-            Person person3 = new Person("Test3", 40);
+            // Update
+            // Person person = session.get(Person.class, 2);
+            // person.setName("Qwerty");
 
-            session.save(person1);
-            session.save(person2);
-            session.save(person3);
+            // Delete
+            // Person person = session.get(Person.class, 2);
+            // session.delete(person);
+
+            Person person = new Person("Some name", 60);
+            session.save(person);
 
             session.getTransaction().commit();
+
+            System.out.println(person.getId());
         } finally {
             sessionFactory.close();
         }
