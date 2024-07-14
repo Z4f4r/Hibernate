@@ -36,6 +36,14 @@ public class Person {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
     public void setName(String name) {
         this.name = name;
     }
