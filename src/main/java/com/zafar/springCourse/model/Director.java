@@ -5,11 +5,11 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Person")
-public class Person {
+@Table(name = "Director")
+public class Director {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "director_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -19,22 +19,15 @@ public class Person {
     @Column(name = "age")
     private int age;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Item> items;
+    @OneToMany(mappedBy = "director")
+    private List<Movie> movies;
 
-    public Person() {}
+    public Director() {
+    }
 
-    public Person(String name, int age) {
+    public Director(String name, int age) {
         this.name = name;
         this.age = age;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
     }
 
     public int getId() {
@@ -61,9 +54,17 @@ public class Person {
         this.age = age;
     }
 
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
+
     @Override
     public String toString() {
-        return "Person{" +
+        return "Director{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
