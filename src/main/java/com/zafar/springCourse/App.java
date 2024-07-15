@@ -20,52 +20,13 @@ public class App {
         try {
             session.beginTransaction();
 
+            Director director = new Director("Charlie", 30);
 
+            director.addMovie(new Movie("Yoo", 1980));
+            director.addMovie(new Movie("Yoo 2", 1989));
+            director.addMovie(new Movie("Yoo 3", 1999));
 
-//            #2
-//            Director director = session.get(Director.class, 3);
-//            List<Movie> movies = director.getMovies();
-//            for (Movie movie: movies) {
-//                System.out.println(movie.toString());
-//            }
-
-
-
-//            #3
-//            Movie movie = session.get(Movie.class, 4);
-//            Director director = movie.getDirector();
-//            System.out.println(director.toString());
-
-
-
-//            #4
-//            Director director = session.get(Director.class, "1");
-//            Movie movie = new Movie("Django Unchained", 2016, director);
-//            director.getMovies().add(movie);
-//
-//            session.save(movie);
-
-
-
-//            #5
-//            Director director = new Director("Qwerty", 19);
-//            Movie movie = new Movie("Adventure Time", 2010, director);
-//
-//            director.setMovies(new ArrayList<>(Collections.singletonList(movie)));
-//
-//            session.save(director);
-//            session.save(movie);
-
-
-
-//            #6
-//            Movie movie = session.get(Movie.class, 13);
-//            Director director = session.get(Director.class, 1);
-//            movie.setDirector(director);
-//
-//            session.save(movie);
-            
-
+            session.save(director);
 
             session.getTransaction().commit();
         } finally {

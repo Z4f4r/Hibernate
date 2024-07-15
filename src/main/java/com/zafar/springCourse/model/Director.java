@@ -1,7 +1,9 @@
 package com.zafar.springCourse.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,6 +22,9 @@ public class Director {
     private int age;
 
     @OneToMany(mappedBy = "director")
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE,
+            org.hibernate.annotations.CascadeType.MERGE,
+            org.hibernate.annotations.CascadeType.REFRESH})
     private List<Movie> movies;
 
     public Director() {
@@ -62,6 +67,14 @@ public class Director {
         this.movies = movies;
     }
 
+    public void addMovie(Movie movie) {
+        if (this.movies == null) {
+            this.movies = new ArrayList<>();
+        }
+
+        this.movies.add(movie);
+        movie.setDirector(this);
+    }
     @Override
     public String toString() {
         return "Director{" +
